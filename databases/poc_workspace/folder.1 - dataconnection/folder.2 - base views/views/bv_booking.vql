@@ -35,7 +35,7 @@ CREATE OR REPLACE WRAPPER JDBC "bv_Booking"
     INDEX 'PK__Booking__35ABFDE05B3B9F25' CLUSTER UNIQUE PRIMARY ( 'Booking_ID' );
 
 CREATE OR REPLACE TABLE "bv_Booking" I18N us_est (
-        "Booking_ID":long (notnull, sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Uniquely identifies each booking record.'),
+        "Booking_ID":long (notnull, sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
         "Resort_ID":long (notnull, sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Identifier for the resort associated with the booking.'),
         "Booking_Date":timestamp (sourcetypeid = '93', sourcetypedecimals = '3', sourcetypesize = '23', description = 'Specifies the date when the booking was created.'),
         "Booking_Type_ID":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Represents the type or category of the booking.'),
