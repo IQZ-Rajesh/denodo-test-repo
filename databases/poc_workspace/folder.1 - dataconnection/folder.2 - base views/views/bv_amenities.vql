@@ -16,7 +16,7 @@ CREATE OR REPLACE WRAPPER JDBC "bv_Amenities"
     INDEX 'PK__Amenitie__1F4A127C3A794B5C' CLUSTER UNIQUE PRIMARY ( 'Amenities_ID' );
 
 CREATE OR REPLACE TABLE "bv_Amenities" I18N us_est (
-        "Amenities_ID":long (notnull, autoincrement, sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        "Amenities_ID":long (notnull, autoincrement, sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'test-test'),
         "Resort_ID":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Represents the identifier of the resort associated with the amenity.'),
         "Amenities_Name":text (sourcetypeid = '12', sourcetypesize = '100', description = 'Specifies the name of the amenity.'),
         "Rate":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '4', sourcetypesize = '19', description = 'Indicates the rate or cost associated with the amenity.'),
