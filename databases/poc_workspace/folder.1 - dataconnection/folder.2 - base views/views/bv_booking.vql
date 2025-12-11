@@ -1,0 +1,99 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC "bv_Booking"
+    FOLDER = '/1 - dataconnection/2 - base views'
+    DATASOURCENAME=ds_sql_resort360db
+    CATALOGNAME='${databases.poc_workspace.folder.1 - dataconnection.folder.2 - base views.views.jdbc.bv_booking.CATALOGNAME}' 
+    SCHEMANAME='${databases.poc_workspace.folder.1 - dataconnection.folder.2 - base views.views.jdbc.bv_booking.SCHEMANAME}' 
+    RELATIONNAME='Booking' 
+    OUTPUTSCHEMA (
+        "Booking_ID" = 'Booking_ID' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  NOT NULL SORTABLE,
+        "Resort_ID" = 'Resort_ID' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  NOT NULL SORTABLE,
+        "Booking_Date" = 'Booking_Date' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='3', sourcetypesize='23', sourcetypeid='93', sourcetypename='datetime')  SORTABLE,
+        "Booking_Type_ID" = 'Booking_Type_ID' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        "Tour_Operator_ID" = 'Tour_Operator_ID' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        "Tour_Operator_Contract_ID" = 'Tour_Operator_Contract_ID' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        "Customer_ID" = 'Customer_ID' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        "Arrival_Date" = 'Arrival_Date' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='91', sourcetypename='date')  SORTABLE,
+        "Arrival_Time" = 'Arrival_Time' :'java.time.LocalTime' (OPT) (sourcetypedecimals='7', sourcetypesize='16', sourcetypeid='92', sourcetypename='time')  SORTABLE,
+        "No_of_Pax" = 'No_of_Pax' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        "Reservation_Start_Date" = 'Reservation_Start_Date' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='91', sourcetypename='date')  SORTABLE,
+        "Reservation_End_Date" = 'Reservation_End_Date' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='91', sourcetypename='date')  SORTABLE,
+        "No_Of_Days" = 'No_Of_Days' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        "Is_Checked_in" = 'Is_Checked_in' :'java.lang.Boolean' (OPT) (sourcetypesize='1', sourcetypeid='-7', sourcetypename='bit')  SORTABLE,
+        "Room_Master_ID" = 'Room_Master_ID' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        "Room_Fare" = 'Room_Fare' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='4', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='money')  NOT SORTABLE,
+        "Amount_Before_Discount" = 'Amount_Before_Discount' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='4', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='money')  NOT SORTABLE,
+        "PercentageDiscount" = 'PercentageDiscount' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='5', sourcetypeid='3', sourcetypename='decimal')  SORTABLE,
+        "Final_Amount" = 'Final_Amount' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='4', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='money')  NOT SORTABLE,
+        "Departure_Date" = 'Departure_Date' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='91', sourcetypename='date')  SORTABLE,
+        "Departure_Time" = 'Departure_Time' :'java.time.LocalTime' (OPT) (sourcetypedecimals='7', sourcetypesize='16', sourcetypeid='92', sourcetypename='time')  SORTABLE,
+        "Is_Checked_Out" = 'Is_Checked_Out' :'java.lang.String' (OPT) (sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        "Customer_Enquiry_Id" = 'Customer_Enquiry_Id' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        "CreatedDate" = 'CreatedDate' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='3', sourcetypesize='23', sourcetypeid='93', sourcetypename='datetime')  SORTABLE
+    )
+    CONSTRAINT 'PK__Booking__35ABFDE05B3B9F25' PRIMARY KEY ( 'Booking_ID' )
+    INDEX 'PK__Booking__35ABFDE05B3B9F25' CLUSTER UNIQUE PRIMARY ( 'Booking_ID' );
+
+CREATE OR REPLACE TABLE "bv_Booking" I18N us_est (
+        "Booking_ID":long (notnull, sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        "Resort_ID":long (notnull, sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Identifier for the resort associated with the booking.'),
+        "Booking_Date":timestamp (sourcetypeid = '93', sourcetypedecimals = '3', sourcetypesize = '23', description = 'Specifies the date when the booking was created.'),
+        "Booking_Type_ID":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Represents the type or category of the booking.'),
+        "Tour_Operator_ID":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Identifies the tour operator managing the booking.'),
+        "Tour_Operator_Contract_ID":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Links the booking to the corresponding tour operator contract.'),
+        "Customer_ID":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Denotes the customer associated with the booking.'),
+        "Arrival_Date":localdate (sourcetypeid = '91', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Indicates the date of arrival for the booking.'),
+        "Arrival_Time":time (sourcetypeid = '92', sourcetypedecimals = '7', sourcetypesize = '16', description = 'Specifies the time of arrival for the booking.'),
+        "No_of_Pax":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Provides the number of people included in the booking.'),
+        "Reservation_Start_Date":localdate (sourcetypeid = '91', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Marks the start date of the reservation period.'),
+        "Reservation_End_Date":localdate (sourcetypeid = '91', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Marks the end date of the reservation period.'),
+        "No_Of_Days":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Represents the total number of days for the booking.'),
+        "Is_Checked_in":boolean (sourcetypeid = '-7', sourcetypesize = '1', description = 'Indicates whether the customer has checked in for the booking.'),
+        "Room_Master_ID":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Identifies the specific room allocated for the booking.'),
+        "Room_Fare":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '4', sourcetypesize = '19', description = 'Denotes the fare or price of the room associated with the booking.'),
+        "Amount_Before_Discount":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '4', sourcetypesize = '19', description = 'Indicates the total amount before any discounts are applied.'),
+        "PercentageDiscount":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '5', description = 'Shows the percentage of discount applied to the booking.'),
+        "Final_Amount":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '4', sourcetypesize = '19', description = 'Displays the final amount to be paid after discounts.'),
+        "Departure_Date":localdate (sourcetypeid = '91', sourcetypedecimals = '0', sourcetypesize = '10', description = 'Specifies the departure date for the booking.'),
+        "Departure_Time":time (sourcetypeid = '92', sourcetypedecimals = '7', sourcetypesize = '16', description = 'Specifies the departure time for the booking.'),
+        "Is_Checked_Out":text (sourcetypeid = '12', sourcetypesize = '50', description = 'Indicates whether the customer has checked out after the stay.'),
+        "Customer_Enquiry_Id":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Links the booking to the corresponding customer enquiry.'),
+        "CreatedDate":timestamp (sourcetypeid = '93', sourcetypedecimals = '3', sourcetypesize = '23', description = 'Records the date and time when the booking record was created.')
+    )
+    FOLDER = '/1 - dataconnection/2 - base views'
+    CONSTRAINT 'PK__Booking__35ABFDE05B3B9F25' PRIMARY KEY ( 'Booking_ID' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "bv_Booking"(
+        I18N us_est
+        CONSTRAINTS (
+             ADD "Booking_ID" (any) OPT ANY
+             ADD "Resort_ID" (any) OPT ANY
+             ADD "Booking_Date" (any) OPT ANY
+             ADD "Booking_Type_ID" (any) OPT ANY
+             ADD "Tour_Operator_ID" (any) OPT ANY
+             ADD "Tour_Operator_Contract_ID" (any) OPT ANY
+             ADD "Customer_ID" (any) OPT ANY
+             ADD "Arrival_Date" (any) OPT ANY
+             ADD "Arrival_Time" (any) OPT ANY
+             ADD "No_of_Pax" (any) OPT ANY
+             ADD "Reservation_Start_Date" (any) OPT ANY
+             ADD "Reservation_End_Date" (any) OPT ANY
+             ADD "No_Of_Days" (any) OPT ANY
+             ADD "Is_Checked_in" (any) OPT ANY
+             ADD "Room_Master_ID" (any) OPT ANY
+             ADD "Room_Fare" (any) OPT ANY
+             ADD "Amount_Before_Discount" (any) OPT ANY
+             ADD "PercentageDiscount" (any) OPT ANY
+             ADD "Final_Amount" (any) OPT ANY
+             ADD "Departure_Date" (any) OPT ANY
+             ADD "Departure_Time" (any) OPT ANY
+             ADD "Is_Checked_Out" (any) OPT ANY
+             ADD "Customer_Enquiry_Id" (any) OPT ANY
+             ADD "CreatedDate" (any) OPT ANY
+        )
+        OUTPUTLIST ("Amount_Before_Discount", "Arrival_Date", "Arrival_Time", "Booking_Date", "Booking_ID", "Booking_Type_ID", "CreatedDate", "Customer_Enquiry_Id", "Customer_ID", "Departure_Date", "Departure_Time", "Final_Amount", "Is_Checked_Out", "Is_Checked_in", "No_Of_Days", "No_of_Pax", "PercentageDiscount", "Reservation_End_Date", "Reservation_Start_Date", "Resort_ID", "Room_Fare", "Room_Master_ID", "Tour_Operator_Contract_ID", "Tour_Operator_ID"
+        )
+        WRAPPER (jdbc "bv_Booking")
+    );
+

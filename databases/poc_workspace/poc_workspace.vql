@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE DATABASE poc_workspace '';
+
+ALTER DATABASE poc_workspace
+  CHARSET DEFAULT;
+

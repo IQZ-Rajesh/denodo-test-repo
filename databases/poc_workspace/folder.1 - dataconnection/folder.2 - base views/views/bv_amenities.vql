@@ -1,0 +1,42 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC "bv_Amenities"
+    FOLDER = '/1 - dataconnection/2 - base views'
+    DATASOURCENAME=ds_sql_resort360db
+    CATALOGNAME='${databases.poc_workspace.folder.1 - dataconnection.folder.2 - base views.views.jdbc.bv_amenities.CATALOGNAME}' 
+    SCHEMANAME='${databases.poc_workspace.folder.1 - dataconnection.folder.2 - base views.views.jdbc.bv_amenities.SCHEMANAME}' 
+    RELATIONNAME='Amenities' 
+    OUTPUTSCHEMA (
+        "Amenities_ID" = 'Amenities_ID' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint identity')  NOT NULL SORTABLE IS_AUTOINCREMENT,
+        "Resort_ID" = 'Resort_ID' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        "Amenities_Name" = 'Amenities_Name' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        "Rate" = 'Rate' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='4', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='money')  NOT SORTABLE,
+        "CreatedDate" = 'CreatedDate' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='3', sourcetypesize='23', sourcetypeid='93', sourcetypename='datetime')  SORTABLE
+    )
+    CONSTRAINT 'PK__Amenitie__1F4A127C3A794B5C' PRIMARY KEY ( 'Amenities_ID' )
+    INDEX 'PK__Amenitie__1F4A127C3A794B5C' CLUSTER UNIQUE PRIMARY ( 'Amenities_ID' );
+
+CREATE OR REPLACE TABLE "bv_Amenities" I18N us_est (
+        "Amenities_ID":long (notnull, autoincrement, sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'test-test'),
+        "Resort_ID":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Represents the identifier of the resort associated with the amenity.'),
+        "Amenities_Name":text (sourcetypeid = '12', sourcetypesize = '100', description = 'Specifies the name of the amenity.'),
+        "Rate":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '4', sourcetypesize = '19', description = 'Indicates the rate or cost associated with the amenity.'),
+        "CreatedDate":timestamp (sourcetypeid = '93', sourcetypedecimals = '3', sourcetypesize = '23', description = 'Represents the date and time when the amenity record was created.')
+    )
+    FOLDER = '/1 - dataconnection/2 - base views'
+    CONSTRAINT 'PK__Amenitie__1F4A127C3A794B5C' PRIMARY KEY ( 'Amenities_ID' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "bv_Amenities"(
+        I18N us_est
+        CONSTRAINTS (
+             ADD "Amenities_ID" (any) OPT ANY
+             ADD "Resort_ID" (any) OPT ANY
+             ADD "Amenities_Name" (any) OPT ANY
+             ADD "Rate" (any) OPT ANY
+             ADD "CreatedDate" (any) OPT ANY
+        )
+        OUTPUTLIST ("Amenities_ID", "Amenities_Name", "CreatedDate", "Rate", "Resort_ID"
+        )
+        WRAPPER (jdbc "bv_Amenities")
+    );
+

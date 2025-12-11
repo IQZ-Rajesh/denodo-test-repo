@@ -1,0 +1,4 @@
+﻿CREATE OR REPLACE ROLE poc_workspace_reader 'This is a role created to test the workspace features'
+GRANT CONNECT ON admin
+GRANT CONNECT, METADATA, EXECUTE ON poc_workspace;
+

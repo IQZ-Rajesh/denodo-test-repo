@@ -1,0 +1,3 @@
+ALTER ROLE poc_workspace_reader
+GRANT CONNECT, METADATA, EXECUTE ON poc_workspace;
+
